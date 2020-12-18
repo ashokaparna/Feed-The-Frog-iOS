@@ -40,7 +40,7 @@ class GameOverScene: SKScene {
             starThree?.texture = SKTexture(imageNamed: "fullstar")
         }
         
-        if GameLevelHandler.sharedInstance.levelData!.score <= 0 || GameLevelHandler.sharedInstance.currentLevel == 9{
+        if GameLevelHandler.sharedInstance.levelData!.score <= 0 {
             playNext?.alpha = 0.4
         } else {
             playNext?.alpha = 1.0
@@ -82,8 +82,14 @@ class GameOverScene: SKScene {
                         self.view?.presentScene(scene!, transition: .fade(withDuration: 0.5))
                     }
                     run(.sequence([delay, sceneChange]))
-                } else {
-                    //no new level
+                } else if level == 9{
+                    let delay = SKAction.wait(forDuration: 0.5)
+                    let sceneChange = SKAction.run {
+                        let scene = SKScene(fileNamed: "GameCompletedScene")
+                        scene?.scaleMode =  .aspectFill
+                        self.view?.presentScene(scene!, transition: .fade(withDuration: 0.5))
+                    }
+                    run(.sequence([delay, sceneChange]))
                 }
             }
         }

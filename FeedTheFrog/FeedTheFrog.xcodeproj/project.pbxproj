@@ -24,7 +24,11 @@
 		B9165A5F2582EDFB003052C5 /* RopeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9165A5E2582EDFB003052C5 /* RopeDataModel.swift */; };
 		B9165A6C2582F439003052C5 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9165A6B2582F439003052C5 /* LevelData.swift */; };
 		B922C10325889CD8008D083A /* levelcompleted.wav in Resources */ = {isa = PBXBuildFile; fileRef = B922C10225889CD8008D083A /* levelcompleted.wav */; };
-		B922C10B2588A0FC008D083A /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B922C10A2588A0FC008D083A /* bg.mp3 */; };
+		B922C123258AA9A8008D083A /* Slice.caf in Resources */ = {isa = PBXBuildFile; fileRef = B922C122258AA9A8008D083A /* Slice.caf */; };
+		B922C12B258AAE7A008D083A /* bg.wav in Resources */ = {isa = PBXBuildFile; fileRef = B922C12A258AAE7A008D083A /* bg.wav */; };
+		B922C138258AB3E7008D083A /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B922C137258AB3E7008D083A /* fail.mp3 */; };
+		B922C140258AB61B008D083A /* GameCompletedScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B922C13F258AB61B008D083A /* GameCompletedScene.sks */; };
+		B922C145258AB63D008D083A /* GameCompletedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B922C144258AB63D008D083A /* GameCompletedScene.swift */; };
 		B937C41D2588195400A59E4C /* GameSceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B937C41C2588195400A59E4C /* GameSceneBase.swift */; };
 		B937C42725881E6000A59E4C /* GameSceneLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B937C42625881E6000A59E4C /* GameSceneLevel.swift */; };
 		B937C42F258821B300A59E4C /* RopeDataLevels.plist in Resources */ = {isa = PBXBuildFile; fileRef = B937C42E258821B300A59E4C /* RopeDataLevels.plist */; };
@@ -87,7 +91,11 @@
 		B9165A6B2582F439003052C5 /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		B9165A7F25832198003052C5 /* RopeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeNode.swift; sourceTree = "<group>"; };
 		B922C10225889CD8008D083A /* levelcompleted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelcompleted.wav; sourceTree = "<group>"; };
-		B922C10A2588A0FC008D083A /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		B922C122258AA9A8008D083A /* Slice.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slice.caf; sourceTree = "<group>"; };
+		B922C12A258AAE7A008D083A /* bg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bg.wav; sourceTree = "<group>"; };
+		B922C137258AB3E7008D083A /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fail.mp3; sourceTree = "<group>"; };
+		B922C13F258AB61B008D083A /* GameCompletedScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameCompletedScene.sks; sourceTree = "<group>"; };
+		B922C144258AB63D008D083A /* GameCompletedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCompletedScene.swift; sourceTree = "<group>"; };
 		B937C41C2588195400A59E4C /* GameSceneBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneBase.swift; sourceTree = "<group>"; };
 		B937C42625881E6000A59E4C /* GameSceneLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneLevel.swift; sourceTree = "<group>"; };
 		B937C42E258821B300A59E4C /* RopeDataLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RopeDataLevels.plist; sourceTree = "<group>"; };
@@ -252,8 +260,10 @@
 		B922C10125889CC8008D083A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				B922C137258AB3E7008D083A /* fail.mp3 */,
+				B922C12A258AAE7A008D083A /* bg.wav */,
 				B922C10225889CD8008D083A /* levelcompleted.wav */,
-				B922C10A2588A0FC008D083A /* bg.mp3 */,
+				B922C122258AA9A8008D083A /* Slice.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -273,6 +283,8 @@
 			children = (
 				B9A0239F2584B63C00C97E11 /* GameOverScene.sks */,
 				B9A023A42584B66500C97E11 /* GameOverScene.swift */,
+				B922C13F258AB61B008D083A /* GameCompletedScene.sks */,
+				B922C144258AB63D008D083A /* GameCompletedScene.swift */,
 			);
 			path = GameOverScene;
 			sourceTree = "<group>";
@@ -406,15 +418,18 @@
 			files = (
 				B9165A212582B838003052C5 /* Main.storyboard in Resources */,
 				B9165A182582B838003052C5 /* GameScene.sks in Resources */,
+				B922C12B258AAE7A008D083A /* bg.wav in Resources */,
 				B937C42F258821B300A59E4C /* RopeDataLevels.plist in Resources */,
 				B9165A4F2582B8C6003052C5 /* StartScene.sks in Resources */,
+				B922C138258AB3E7008D083A /* fail.mp3 in Resources */,
 				B9A023A02584B63C00C97E11 /* GameOverScene.sks in Resources */,
+				B922C123258AA9A8008D083A /* Slice.caf in Resources */,
+				B922C140258AB61B008D083A /* GameCompletedScene.sks in Resources */,
 				B9A023602584443300C97E11 /* Launch.storyboard in Resources */,
 				B9165A232582B83B003052C5 /* Assets.xcassets in Resources */,
 				B9165A1A2582B838003052C5 /* Actions.sks in Resources */,
 				B922C10325889CD8008D083A /* levelcompleted.wav in Resources */,
 				B9A02390258485C500C97E11 /* LevelsScene.sks in Resources */,
-				B922C10B2588A0FC008D083A /* bg.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +565,7 @@
 				B9DD210D2583668100987D46 /* RopeNode.swift in Sources */,
 				B9165A1E2582B838003052C5 /* GameViewController.swift in Sources */,
 				B937C41D2588195400A59E4C /* GameSceneBase.swift in Sources */,
+				B922C145258AB63D008D083A /* GameCompletedScene.swift in Sources */,
 				B9A023712584581000C97E11 /* LevelsTile.swift in Sources */,
 				B937C42725881E6000A59E4C /* GameSceneLevel.swift in Sources */,
 				B9165A162582B838003052C5 /* AppDelegate.swift in Sources */,

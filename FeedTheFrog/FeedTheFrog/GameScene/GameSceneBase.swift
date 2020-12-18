@@ -18,9 +18,11 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     let frogCategory:UInt32 = 0x1 << 0
     let candyCategory:UInt32 = 0x1 << 1
     
-    private var didCutRope = false
-    private let canCutMultipleRope = false
-    private var isLevelOver = false
+    var didCutRope = false
+    let canCutMultipleRope = false
+    var isLevelOver = false
+    
+    var backgroundMusic: SKAudioNode!
     
     var remainingTime: TimeInterval = 60 {
         didSet {
@@ -52,6 +54,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         if candy.position.y <= 0 {
             print("candy gone")
             isLevelOver = true
+            self.backgroundMusic.run(SKAction.stop())
+            playLevelOverSoundAction()
             showGameOverScreenWithTransition(transition: .fade(withDuration: 0.5), didCollide: false)
         }
     }
@@ -153,6 +157,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
@@ -164,9 +169,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
               let removeNode = SKAction.removeFromParent()
               let sequence = SKAction.sequence([shrink, removeNode])
               isLevelOver = true
-            playLevelCompletedSoundAction()
             frogMouthOpenAndCloseAnimation(delay: 0.15)
-              showGameOverScreenWithTransition(transition: .fade(withDuration: 1.0), didCollide: true)
+            showGameOverScreenWithTransition(transition: .fade(withDuration: 1.0), didCollide: true)
               candy.run(sequence)
         }
     }
@@ -186,11 +190,17 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
               node.run(sequence)
             })
             didCutRope = true
+            playRopeCuttingSoundAction()
         }
       }
     }
     
     func showGameOverScreenWithTransition(transition: SKTransition, didCollide: Bool) {
+        if didCollide {
+            playLevelCompletedSoundAction()
+        } else {
+            playLevelOverSoundAction()
+        }
         saveData(didCollide: didCollide)
         let delay = SKAction.wait(forDuration: 1)
         let sceneChange = SKAction.run {
@@ -264,8 +274,21 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         run(soundAction)
     }
     
+    func playRopeCuttingSoundAction() {
+        let soundAction = SKAction.playSoundFileNamed("Slice.caf", waitForCompletion: true)
+        run(soundAction)
+    }
+    
+    
     func playBgSound() {
-        let soundAction = SKAction.playSoundFileNamed("bg.mp3", waitForCompletion: true)
+        if let musicURL = Bundle.main.url(forResource: "bg", withExtension: "wav") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            addChild(backgroundMusic)
+        }
+    }
+    
+    func playLevelOverSoundAction() {
+        let soundAction = SKAction.playSoundFileNamed("fail.mp3", waitForCompletion: true)
         run(soundAction)
     }
     
