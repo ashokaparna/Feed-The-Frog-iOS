@@ -13,4 +13,13 @@ There are 9 levels and with each level difficulty increases.
 4. Open the `xcworkspace` file in Xcode.
 5. Run the project in simulator or your iPhone and enjoy the game
 
+## References 
+* https://apps.apple.com/us/app/cut-the-rope/id1024506959
+* https://www.flaticon.com/
+* https://hotpot.ai/blog/ios-1x-2x-3x-generator
+* https://www.raywenderlich.com/ios
+* https://www.appcoda.com/
+* https://stackoverflow.com/
+
+
 
